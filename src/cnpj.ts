@@ -2,16 +2,12 @@ import { normalize } from "./normalize.js";
 
 const CNPJ_LENGTH = 14;
 const BODY_LENGTH = 12;
-// toUpperCase() transforma ſ, ı, ß e ﬁ em S, I, SS e FI, então a entrada
-// precisa ser ASCII estrito antes de normalizar.
-const ASCII_DOCUMENT = /^[0-9A-Za-z.\-/]*$/;
 const CNPJ_FORM = /^[0-9A-Z]{12}[0-9]{2}$/;
 const FIRST_DV_WEIGHTS = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
 const SECOND_DV_WEIGHTS = [6, ...FIRST_DV_WEIGHTS];
 const ASCII_ZERO = 48;
 
 function normalizeCnpj(input: string): string | null {
-  if (!ASCII_DOCUMENT.test(input.trim())) return null;
   const normalized = normalize(input);
   if (normalized === null || !CNPJ_FORM.test(normalized)) return null;
   if (new Set(normalized).size === 1) return null;

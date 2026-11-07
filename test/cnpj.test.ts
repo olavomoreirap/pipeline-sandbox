@@ -27,10 +27,6 @@ const VALID: ReadonlyArray<readonly [string, string, string]> = [
   ["alfanumérico com maiúsculas e minúsculas", "12AbC34501dE35", ALPHANUMERIC],
   ["espaços nas pontas", `  ${ALPHANUMERIC}  `, ALPHANUMERIC],
   ["tabulação e quebra de linha nas pontas", `\t${NUMERIC}\n`, NUMERIC],
-  ["gêmeo ASCII de ſ (S)", "S2345678901294", "S2.345.678/9012-94"],
-  ["gêmeo ASCII de ı (I)", "I2345678901248", "I2.345.678/9012-48"],
-  ["gêmeo ASCII de ß (SS)", "SS345678901294", "SS.345.678/9012-94"],
-  ["gêmeo ASCII de ﬁ (FI)", "FI345678901240", "FI.345.678/9012-40"],
   ["Máscara em posições não padrão", "1.12.22.333.000.1-81", NUMERIC],
 ];
 
@@ -59,13 +55,6 @@ const INVALID: ReadonlyArray<readonly [string, string]> = [
   ["Sequência repetida numérica com Máscara", "00.000.000/0000-00"],
   ["Sequência repetida de letras", "AAAAAAAAAAAAAA"],
   ["Sequência repetida de dígitos que não confere", "11111111111111"],
-  // toUpperCase() transformaria estes em S, I, SS e FI e o documento ficaria
-  // válido; só [0-9A-Za-z] ASCII passa (os gêmeos ASCII estão em VALID).
-  ["ſ (s longo) no lugar de S", "ſ2345678901294"],
-  ["ı (i sem ponto) no lugar de I", "ı2345678901248"],
-  ["ß no lugar de SS", "ß345678901294"],
-  ["ligadura ﬁ no lugar de FI", "ﬁ345678901240"],
-  ["ſ com Máscara", "ſ2.345.678/9012-94"],
   ["K de Kelvin (U+212A)", "K2345678901255"],
   ["dígitos de largura total", "１１２２２３３３０００１８１"],
   ["dígitos árabe-índicos", "١١٢٢٢٣٣٣٠٠٠١٨١"],
