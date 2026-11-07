@@ -12,7 +12,6 @@ const ASCII_ZERO = 48;
 
 function normalizeCnpj(input: string): string | null {
   if (!ASCII_DOCUMENT.test(input.trim())) return null;
-  
   const normalized = normalize(input);
   if (normalized === null || !CNPJ_FORM.test(normalized)) return null;
   if (new Set(normalized).size === 1) return null;
