@@ -1,4 +1,5 @@
-// Único entry point da lib. As funções públicas de CNPJ (isValidCnpj,
-// formatCnpj) entram na wave 2 (#5).
+// Único entry point da lib: as quatro funções públicas (isValidCpf, formatCpf,
+// isValidCnpj, formatCnpj).
 // O módulo ./normalize.js é interno e não deve ser reexportado aqui.
+export { formatCnpj, isValidCnpj } from "./cnpj.js";
 export { formatCpf, isValidCpf } from "./cpf.js";
